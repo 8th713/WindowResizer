@@ -1,0 +1,27 @@
+.nav-tabs {
+  margin-bottom: 15px;
+}
+
+.table tbody>tr>td {
+  vertical-align: middle;
+}
+
+.table thead>tr>th:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+
+.table-preset thead>tr>th,
+.table-preset tbody>tr>td {
+  width: 16%;
+}
+
+.table-preset thead>tr>th:last-child,
+.table-preset tbody>tr>td:last-child {
+  width: 20%;
+}
+
+.table label {
+  display: block;
+  margin: 0;
+}

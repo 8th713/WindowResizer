@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-sm-3">
+    <form class="form" novalidate
+          name="form" ng-submit="update()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control"
+               id="name" required
+               ng-model="inputs.name">
+      </div>
+      <div class="form-group">
+        <label for="top">Top</label>
+        <input type="number" class="form-control"
+               id="top" required
+               ng-model="inputs.top">
+      </div>
+      <div class="form-group">
+        <label for="left">Left</label>
+        <input type="number" class="form-control"
+               id="left" required
+               ng-model="inputs.left">
+      </div>
+      <div class="form-group">
+        <label for="width">Width</label>
+        <input type="number" class="form-control"
+               id="width" required min="0"
+               ng-model="inputs.width">
+      </div>
+      <div class="form-group">
+        <label for="height">Height</label>
+        <input type="number" class="form-control"
+               id="height" required min="0"
+               ng-model="inputs.height">
+      </div>
+      <div class="form-group" ng-hide="editing">
+        <button type="submit" class="btn btn-block btn-primary"
+                ng-disabled="form.$invalid">追加</button>
+        <button type="button" class="btn btn-block btn-danger"
+                ng-click="reset()">リセット</button>
+      </div>
+      <div class="form-group" ng-show="editing">
+        <button type="submit" class="btn btn-block btn-primary"
+                ng-disabled="form.$invalid">更新</button>
+        <button type="button" class="btn btn-block btn-danger"
+                ng-click="cancel()">選択解除</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-9">
+    <table class="table table-preset">
+      <thead>
+        <tr ng-controller="SortCtrl">
+          <th ng-click="sort('name')">
+            Name
+            <span class="glyphicon glyphicon-sort-by-alphabet"
+                  ng-show="predicate == 'name'"></span>
+          </th>
+          <th ng-click="sort('top')">
+            Top
+            <span class="glyphicon glyphicon-sort-by-order"
+                  ng-show="predicate == 'top'"></span>
+          </th>
+          <th ng-click="sort('left')">
+            Left
+            <span class="glyphicon glyphicon-sort-by-order"
+                  ng-show="predicate == 'left'"></span>
+          </th>
+          <th ng-click="sort('width')">
+            Width
+            <span class="glyphicon glyphicon-sort-by-order"
+                  ng-show="predicate == 'width'"></span>
+          </th>
+          <th ng-click="sort('height')">
+            Height
+            <span class="glyphicon glyphicon-sort-by-order"
+                  ng-show="predicate == 'height'"></span>
+          </th>
+          <th ng-click="sort()"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="obj in presetsOfArray | orderBy:predicate" ng-class="{active: editing == obj.id}">
+          <td>{{ presets[obj.id].name }}</td>
+          <td>{{ presets[obj.id].top | number }}</td>
+          <td>{{ presets[obj.id].left | number }}</td>
+          <td>{{ presets[obj.id].width | number }}</td>
+          <td>{{ presets[obj.id].height | number }}</td>
+          <td>
+            <button type="button" class="btn btn-info"
+                    ng-click="edit(obj.id)">編集</button>
+            <button type="button" class="btn btn-danger"
+                    ng-click="remove(obj.id)">削除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

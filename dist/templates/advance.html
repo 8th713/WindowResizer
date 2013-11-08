@@ -1,0 +1,59 @@
+<h2>インポート</h2>
+<table class="table" ng-show="imports.length">
+  <thead>
+    <tr ng-controller="SortCtrl">
+      <th ng-click="sort()">#</th>
+      <th ng-click="sort('preset.name')">
+        Name
+        <span class="glyphicon glyphicon-sort-by-alphabet"
+              ng-show="predicate == 'name'"></span>
+      </th>
+      <th ng-click="sort('preset.top')">
+        Top
+        <span class="glyphicon glyphicon-sort-by-order"
+              ng-show="predicate == 'top'"></span>
+      </th>
+      <th ng-click="sort('preset.left')">
+        Left
+        <span class="glyphicon glyphicon-sort-by-order"
+              ng-show="predicate == 'left'"></span>
+      </th>
+      <th ng-click="sort('preset.width')">
+        Width
+        <span class="glyphicon glyphicon-sort-by-order"
+              ng-show="predicate == 'width'"></span>
+      </th>
+      <th ng-click="sort('preset.height')">
+        Height
+        <span class="glyphicon glyphicon-sort-by-order"
+              ng-show="predicate == 'height'"></span>
+      </th>
+      <th ng-click="sort('file')">
+        File
+        <span class="glyphicon glyphicon-sort-by-order"
+              ng-show="predicate == 'file'"></span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="data in imports | orderBy:predicate">
+      <td><label>
+          <input type="checkbox" ng-model="data.selected">
+      </label></td>
+      <td>{{ data.preset.name }}</td>
+      <td>{{ data.preset.top | number }}</td>
+      <td>{{ data.preset.left | number }}</td>
+      <td>{{ data.preset.width | number }}</td>
+      <td>{{ data.preset.height | number }}</td>
+      <td>{{ data.file }}</td>
+    </tr>
+  </tbody>
+</table>
+<div ng-show="imports.length">
+  <button class="btn btn-primary" type="button" ng-click="addSelected()">選択アイテムをインポート</button>
+  <button class="btn btn-danger"  type="button" ng-click="imports = []">リストをリセット</button>
+</div>
+<hr>
+<input type="file" multiple accept=".json" wr-change="upload($files)">
+<h2>エクスポート</h2>
+<button class="btn btn-primary" ng-click="exports()">ファイルに出力する</button>

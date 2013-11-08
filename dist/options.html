@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="App" ng-csp>
+<head>
+  <meta charset="utf-8">
+  <title>Window Resizer</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/option.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Window Resizer</h1>
+    </header>
+    <ul class="nav nav-tabs" ng-controller="NavCtrl">
+      <li ng-class="{active: path == '/'}"><a href="#/">プリセット</a></li>
+      <li ng-class="{active: path == '/advance'}"><a href="#/advance">インポート/エクスポート</a></li>
+      <li ng-class="{active: path == '/about'}"><a href="#/about">About</a></li>
+    </ul>
+    <div ng-view></div>
+  </div>
+  <script src="js/angular.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/option.js"></script>
+</body>
+</html>

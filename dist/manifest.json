@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "name": "Window Resizer",
+  "description": "Window Resizer",
+  "homepage_url": "http://sites.google.com/site/8th713lab/Home/chrome",
+  "update_url": "http://sites.google.com/site/8th713lab/Home/chrome/update.xml",
+  "icons": {
+    "128": "images/128.png",
+    "48": "images/48.png",
+    "16": "images/16.png"
+  },
+  "browser_action": {
+    "default_icon": "images/19.png",
+    "default_popup": "popup.html",
+    "default_title": "Window Resizer"
+  },
+  "options_page": "options.html",
+  "permissions": [ "tabs", "storage" ]
+}

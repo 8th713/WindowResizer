@@ -1,0 +1,7 @@
+{
+  "name": "WindowResizer",
+  "dependencies": {
+    "bootstrap": "~3.0.1",
+    "angular": "~1.0.8"
+  }
+}
